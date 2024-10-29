@@ -1,0 +1,16 @@
+version: '3.8'
+services:
+  postgres-db:
+    image: postgres:15 
+    container_name: spring_postgres_db
+    environment:
+      POSTGRES_USER: myuser       # Benutzername
+      POSTGRES_PASSWORD: mypassword  # Passwort
+      POSTGRES_DB: mydatabase        # Datenbankname
+    ports:
+      - "5433:5432" # change if needed
+    volumes:
+      - postgres_data:/var/lib/postgresql/data 
+
+volumes:
+  postgres_data:
