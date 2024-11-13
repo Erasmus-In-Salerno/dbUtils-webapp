@@ -6,7 +6,41 @@
     <title>Project Status</title>
 </head>
 <body>
-    <h1>Spring Project Status</h1>
-    <p th:text="${message}"></p>
+    <h1>Apache dbUtils with animals</h1>
+    <!-- Form zum Eintrag hinzufügen -->
+    <h3>Add a new animal</h3>
+    <form th:action="@{/addAnimal}" method="post">
+        <input type="text" name="inputName" placeholder="Name" required />
+        <input type="number" name="inputAge" placeholder="Age" required />
+        <input type="text" name="inputSpecies" placeholder="Species" required />
+        <button type="submit">Save to database</button>
+    </form>
+
+    <h3>Remove an animal</h3>
+    <form th:action="@{/deleteAnimal}" method="post">
+        <input type="hidden" name="_method" value="delete" />
+        <input type="number" name="removeId" placeholder="ID" required>
+        <button type="submit">Delete from database</button>
+    </form>
+
+    <h2>Animals from Database</h2>
+    <table>
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Species</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="animal: ${animals}">
+            <td th:text="${animal.id}"></td>
+            <td th:text="${animal.name}"></td>
+            <td th:text="${animal.age}"></td>
+            <td th:text="${animal.species}"></td>
+        </tr>
+        </tbody>
+    </table>
 </body>
 </html>
