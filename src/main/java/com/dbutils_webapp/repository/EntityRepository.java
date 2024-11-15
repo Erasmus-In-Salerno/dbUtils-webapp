@@ -1,8 +1,6 @@
 package com.dbutils_webapp.repository;
 
-import java.util.List;
-
-public interface EntityRepositoryInterface<T> {
+public interface EntityRepository<T> {
     public T saveEntity(T entity);
     //public List<T> findAll();
     //public boolean deleteEntity(T entity);
