@@ -21,6 +21,12 @@
     <dependencies>
         <!-- DBUtils Dependency -->
         <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-thymeleaf</artifactId>
+            <version>${spring.thymeleaf.version}</version>
+        </dependency>
+
+        <dependency>
             <groupId>commons-dbutils</groupId>
             <artifactId>commons-dbutils</artifactId>
             <version>${dbutils.version}</version>
@@ -42,16 +48,17 @@
         </dependency>
 
         <!-- Database Driver (z.B. für MySQL) -->
+        <!-- https://mvnrepository.com/artifact/org.postgresql/postgresql -->
         <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
-            <version>8.0.27</version>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>42.7.4</version>
         </dependency>
 
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-thymeleaf</artifactId>
-            <version>${spring.thymeleaf.version}</version>
+            <artifactId>spring-boot-starter-jdbc</artifactId>
+            <version>3.3.5</version>
         </dependency>
     </dependencies>
 
