@@ -1,3 +1,5 @@
-/.idea
-/.vscode
-/target
+.vscode/settings.json
+target
+.idea/**/workspace.xml
+.idea/**/usage.statistics.xml
+.idea/**/shelf
