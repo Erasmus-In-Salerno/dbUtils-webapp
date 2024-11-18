@@ -11,6 +11,10 @@ public class Animal extends Entity {
 
     private String species;
 
+    public Animal(){
+        super();
+    }
+
     public Animal( String name, int age, String species) {
         super();
         this.setName(name);

@@ -30,7 +30,7 @@ public class HomeController {
     }
 
     @DeleteMapping("/deleteAnimal")
-    public String deleteAnimal(@RequestParam("removeId") int id) {
+    public String deleteAnimal(@RequestParam("removeId") Long id) {
         repo.deleteEntity(id);
         return "redirect:/";
     }

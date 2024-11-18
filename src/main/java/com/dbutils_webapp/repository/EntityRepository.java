@@ -6,5 +6,5 @@ public interface EntityRepository<T> {
     T saveEntity(T entity);
     List<T> findAll();
     boolean deleteEntity(T entity);
-    boolean deleteEntity(int id);
+    boolean deleteEntity(Long id);
 }

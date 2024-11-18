@@ -53,7 +53,7 @@ public class EntityRepositoryImpl implements EntityRepository<Entity> {
     }
 
     @Override
-    public boolean deleteEntity(int id) {
+    public boolean deleteEntity(Long id) {
         return false;
     }
 

@@ -3,6 +3,7 @@ package com.dbutils_webapp.repository.impl;
 import com.dbutils_webapp.model.Animal;
 import com.dbutils_webapp.repository.EntityRepository;
 import org.apache.commons.dbutils.QueryRunner;
+import org.apache.commons.dbutils.handlers.BeanListHandler;
 import org.apache.commons.dbutils.handlers.ScalarHandler;
 import org.springframework.stereotype.Repository;
 
@@ -45,16 +46,28 @@ public class AnimalRepositoryImpl implements EntityRepository<Animal> {
 
     @Override
     public List<Animal> findAll() {
-        return List.of();
+        String sql = "SELECT * FROM animals";
+        try{
+            List<Animal> animals = queryRunner.query(sql, new BeanListHandler<>(Animal.class));
+            return animals;
+        } catch (SQLException e) {
+            throw new RuntimeException("Error saving person", e);
+        }
     }
 
     @Override
     public boolean deleteEntity(Animal entity) {
-        return false;
+        return deleteEntity(entity.getId());
     }
 
     @Override
-    public boolean deleteEntity(int id) {
-        return false;
+    public boolean deleteEntity(Long id) {
+        String sql = "DELETE FROM table_name WHERE id = ?;";
+        try{
+            int deleted = queryRunner.update(sql, id);
+            return deleted > 0;
+        } catch (SQLException e) {
+            throw new RuntimeException("Error saving person", e);
+        }
     }
 }
