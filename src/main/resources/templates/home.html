@@ -18,10 +18,11 @@
 
     <h3>Remove an animal</h3>
     <form th:action="@{/deleteAnimal}" method="post">
-        <input type="hidden" name="_method" value="delete" />
-        <input type="number" name="removeId" placeholder="ID" required>
+        <input type="hidden" name="_method" value="DELETE">
+        <input type="number" name="id" placeholder="ID" required>
         <button type="submit">Delete from database</button>
     </form>
+
 
     <h2>Animals from Database</h2>
     <table>

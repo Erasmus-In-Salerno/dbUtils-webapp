@@ -62,7 +62,7 @@ public class AnimalRepositoryImpl implements EntityRepository<Animal> {
 
     @Override
     public boolean deleteEntity(Long id) {
-        String sql = "DELETE FROM table_name WHERE id = ?;";
+        String sql = "DELETE FROM animals WHERE id = ?;";
         try{
             int deleted = queryRunner.update(sql, id);
             return deleted > 0;

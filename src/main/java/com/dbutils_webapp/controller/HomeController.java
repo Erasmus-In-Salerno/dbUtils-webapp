@@ -29,9 +29,13 @@ public class HomeController {
         return "redirect:/";
     }
 
-    @DeleteMapping("/deleteAnimal")
-    public String deleteAnimal(@RequestParam("removeId") Long id) {
-        repo.deleteEntity(id);
-        return "redirect:/";
+    @PostMapping("/deleteAnimal")
+    public String deleteAnimal(@RequestParam("id") Long id) {
+        try{
+            repo.deleteEntity(id);
+            return "redirect:/";
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
     }
 }
