@@ -1,40 +1,41 @@
 package com.dbutils_webapp.repository.impl;
 
+import com.dbutils_webapp.model.Animal;
+import com.dbutils_webapp.repository.EntityRepository;
 import org.apache.commons.dbutils.QueryRunner;
 import org.apache.commons.dbutils.handlers.ScalarHandler;
 import org.springframework.stereotype.Repository;
-
-import com.dbutils_webapp.model.Entity;
-import com.dbutils_webapp.repository.EntityRepository;
 
 import javax.sql.DataSource;
 import java.sql.SQLException;
 import java.util.List;
 
 @Repository
-public class EntityRepositoryImpl implements EntityRepository<Entity> {
+public class AnimalRepositoryImpl implements EntityRepository<Animal> {
     private final QueryRunner queryRunner;
 
-    public EntityRepositoryImpl(DataSource dataSource) {
+    public AnimalRepositoryImpl(DataSource dataSource) {
         this.queryRunner = new QueryRunner(dataSource);
     }
 
 
     @Override
-    public Entity saveEntity(Entity entity){
+    public Animal saveEntity(Animal entity) {
         try {
             if (entity.getId() == null) {
                 // Insert - Note the RETURNING clause for PostgreSQL
-                String sql = "INSERT INTO entities (name) VALUES (?) RETURNING id";
+                String sql = "INSERT INTO animals (name, age, species) VALUES (?, ?, ?) RETURNING id";
                 Long generatedId = queryRunner.query(sql,
-                    new ScalarHandler<>(),
-                    entity.getName()
+                        new ScalarHandler<>(),
+                        entity.getName(),
+                        entity.getAge(),
+                        entity.getSpecies()
                 );
                 entity.setId(generatedId);
             } else {
                 // Update
-                String sql = "UPDATE persons SET name = ? WHERE id = ?";
-                queryRunner.update(sql, entity.getName(), entity.getId());
+                String sql = "UPDATE animals SET name = ?, age = ?, species = ? WHERE id = ?";
+                queryRunner.update(sql, entity.getName(), entity.getAge(), entity.getSpecies(), entity.getId());
             }
             return entity;
         } catch (SQLException e) {
@@ -43,12 +44,12 @@ public class EntityRepositoryImpl implements EntityRepository<Entity> {
     }
 
     @Override
-    public List<Entity> findAll() {
+    public List<Animal> findAll() {
         return List.of();
     }
 
     @Override
-    public boolean deleteEntity(Entity entity) {
+    public boolean deleteEntity(Animal entity) {
         return false;
     }
 
@@ -56,5 +57,4 @@ public class EntityRepositoryImpl implements EntityRepository<Entity> {
     public boolean deleteEntity(int id) {
         return false;
     }
-
 }
