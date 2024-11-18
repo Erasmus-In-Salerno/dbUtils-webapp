@@ -9,6 +9,7 @@ import com.dbutils_webapp.repository.EntityRepository;
 
 import javax.sql.DataSource;
 import java.sql.SQLException;
+import java.util.List;
 
 @Repository
 public class EntityRepositoryImpl implements EntityRepository<Entity> {
@@ -40,5 +41,20 @@ public class EntityRepositoryImpl implements EntityRepository<Entity> {
             throw new RuntimeException("Error saving person", e);
         }
     }
-    
+
+    @Override
+    public List<Entity> findAll() {
+        return List.of();
+    }
+
+    @Override
+    public boolean deleteEntity(Entity entity) {
+        return false;
+    }
+
+    @Override
+    public boolean deleteEntity(Long id) {
+        return false;
+    }
+
 }

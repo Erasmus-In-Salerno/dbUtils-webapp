@@ -1,24 +1,25 @@
 package com.dbutils_webapp.model;
 
-//import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
 
+//@
+@Setter
+@Getter
+public class Animal extends Entity {
+    private int age;
 
-@NoArgsConstructor
-@AllArgsConstructor
-//@Entity
-public class Animal {
-    //@Id
-    //@GeneratedValue(strategy = GenerationType.IDENTITY)
-    public int id;
+    private String species;
 
-    //@Column
-    public String name;
+    public Animal(){
+        super();
+    }
 
-    //@Column
-    public int age;
+    public Animal( String name, int age, String species) {
+        super();
+        this.setName(name);
+        this.age = age;
+        this.species = species;
+    }
 
-    //@Column
-    public String species;
 }
