@@ -1,0 +1,8 @@
+jdk:
+  - openjdk11
+
+build:
+  mvn:
+    version: 3.8.8
+  install:
+    - mvn install -DskipTests
