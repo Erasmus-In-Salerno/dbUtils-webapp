@@ -19,19 +19,25 @@
         <maven.compiler.target>21</maven.compiler.target>
         <maven.compiler.release>21</maven.compiler.release>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <dbutils.version>1.7</dbutils.version>
         <spring.boot.version>3.3.5</spring.boot.version>
         <spring.thymeleaf.version>3.3.5</spring.thymeleaf.version>
         <jakarta.persistence.version>3.1.0</jakarta.persistence.version>
         <org.projectlombok.version>1.18.24</org.projectlombok.version>
     </properties>
 
+    <repositories>
+        <repository>
+            <id>jitpack.io</id>
+            <url>https://jitpack.io</url>
+        </repository>
+    </repositories>
+
     <dependencies>
-        <!-- DBUtils Dependency -->
+        <!-- DBUtils Dependency from JitPack -->
         <dependency>
-            <groupId>commons-dbutils</groupId>
+            <groupId>com.github.Erasmus-In-Salerno</groupId>
             <artifactId>commons-dbutils</artifactId>
-            <version>${dbutils.version}</version>
+            <version>07f6f08056</version>
         </dependency>
 
         <!-- Spring Boot Starter Web -->
@@ -49,8 +55,7 @@
             <scope>test</scope>
         </dependency>
 
-        <!-- Database Driver (z.B. für MySQL) -->
-        <!-- https://mvnrepository.com/artifact/org.postgresql/postgresql -->
+        <!-- Database Driver (e.g., for PostgreSQL) -->
         <dependency>
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
